@@ -248,7 +248,7 @@ while True:
     try:
         now = datetime.datetime.now().time()
         trade_start_time = datetime.time(8, 0, 0)
-        trade_end_time = datetime.time(8, 59, 50)
+        trade_end_time = datetime.time(9, 0, 0)
 
         if trade_start_time > now or now > trade_end_time:
             print(trade_start_time,"~",trade_end_time)
