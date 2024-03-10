@@ -26,7 +26,7 @@ ma_date = 5
 cut_rate_overraise = 1.15  #전일 상승폭이 너무 높은 코인 제외
 
 buy_rate = [0.34, 0.33, 0.33]
-emergency_sell_rate = [1.055, 1.055, 1.05]
+emergency_sell_rate = [1.055, 1.053, 1.051]
 
 def send_message(msg):
     """디스코드 메세지 전송"""
