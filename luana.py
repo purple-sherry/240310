@@ -26,7 +26,7 @@ ma_date = 5
 cut_rate_overraise = 1.15  #전일 상승폭이 너무 높은 코인 제외
 
 buy_rate = [0.34, 0.33, 0.33]
-emergency_sell_rate = [1.06, 1.06, 1.06]
+emergency_sell_rate = [1.055, 1.055, 1.05]
 
 def send_message(msg):
     """디스코드 메세지 전송"""
@@ -122,7 +122,7 @@ def get_coin_kvalue(trade_coin_list, find_date, fee):
         send_message(msg)
         print(trade_coin)
         try:
-            for k in np.arange(0.2, 0.51, 0.02):
+            for k in np.arange(0.25, 0.51, 0.03):
                 k_value = np.round(k, 3)
                 ohlcv_name = "KRW-" + trade_coin
                 df = pyupbit.get_ohlcv(ohlcv_name, count=find_date)
@@ -248,7 +248,7 @@ while True:
     try:
         now = datetime.datetime.now().time()
         trade_start_time = datetime.time(8, 0, 0)
-        trade_end_time = datetime.time(8, 40, 0)
+        trade_end_time = datetime.time(9, 0, 0)
 
         if trade_start_time > now or now > trade_end_time:
             print(trade_start_time,"~",trade_end_time)
@@ -349,7 +349,7 @@ while True:
                                 "          target_price: {:,.1f}").format(no3_coin, round(no3_current_price, 1), round(no3_target_price, 1))
                 send_message(no3_trade_msg)
                 print(no3_trade_msg)
-
+            print("※no1_target_price",no1_target_price,"no1_current_price",no1_current_price)
             if no1_target_price < no1_current_price and no1_buy_msg == "":
                 krw = get_balance("KRW")
                 print(now.strftime('%Y.%m.%d %H:%M:%S - '),"지갑에 ",krw,"원이 있습니다")
@@ -484,8 +484,7 @@ while True:
             no1_k, no2_k, no3_k = "", "", ""
             no1_buy_msg, no2_buy_msg, no3_buy_msg = "", "", ""
             
-            print("60초 쉽니다")
-            time.sleep(60)
+            time.sleep(5)
             
             if no1_sell_mny>0 or no2_sell_mny>0 or no3_sell_mny>0:
                 end_msg = "Today's Summary☎"
@@ -496,10 +495,10 @@ while True:
                 no1_coin_buy, no2_coin_buy, no3_coin_buy = 0, 0, 0
                 no1_sell_mny, no2_sell_mny, no3_sell_mny = 0, 0, 0
                 no1_earning, no2_earning, no3_earning = 0, 0, 0
-                no1_trade_msg, no2_trade_msg, no3_trade_msg = "","",""
+            no1_trade_msg, no2_trade_msg, no3_trade_msg = "","",""
                 
-            print("60초 쉽니다")    
-            time.sleep(60)
+ 
+            time.sleep(5)
 
         time.sleep(1)
         
