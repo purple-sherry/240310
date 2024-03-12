@@ -26,7 +26,7 @@ ma_date = 5
 cut_rate_overraise = 1.15  #전일 상승폭이 너무 높은 코인 제외
 
 buy_rate = [0.34, 0.33, 0.33]
-emergency_sell_rate = [1.055, 1.053, 1.051]
+emergency_sell_rate = [1.05, 1.05, 1.05]
 
 def send_message(msg):
     """디스코드 메세지 전송"""
@@ -122,7 +122,7 @@ def get_coin_kvalue(trade_coin_list, find_date, fee):
         send_message(msg)
         print(trade_coin)
         try:
-            for k in np.arange(0.25, 0.51, 0.03):
+            for k in np.arange(0.35, 0.55, 0.03):
                 k_value = np.round(k, 3)
                 ohlcv_name = "KRW-" + trade_coin
                 df = pyupbit.get_ohlcv(ohlcv_name, count=find_date)
