@@ -13,20 +13,19 @@ name = "SHERRY"
 access = "x70SQ3jOuppQBeedtfUNqMhSHZzCBLtc7CJ8CEvz"
 secret = "XnuKCo7vOxrsbd92PpAKB4sbsSgvn6pIGOwuz1uy"
 
-original_coin_list = ["BTC", "BCH", "BSV", "BTG", "ETH",
-                      "XRP", "ADA", "SOL", "DOGE", "STX",
-                      "VET", "LINK", "AVAX", "SAND", "WAXP",
-                      "ATOM", "STRAX", "ETC", "QTUM", "PDA",
-                      "GAS", "SOL", "TON", "ONG"]
+original_coin_list = ["BTC", "ETH", "SOL", "ADA", "DOGE",
+                      "DOT", "NEAR", "THETA", "BTG", "STX",
+                      "GLM", "IQ", "ATOM", "BTG", "ETC",
+                      "QTUM", "SAND","LINK", "ONT", "AVAX", "EOS", "BSV", "CELO"]
 
-additional_coins = ["BTC", "ETH", "LINK", "GAS", "SOL", "ETC", "QTUM"] #240228_추가
+additional_coins = ["BTC","ETH","DOGE","THETA","ATOM","GLM"] #240228_추가
 
 find_date = 10
 ma_date = 5
-cut_rate_overraise = 1.10  #전일 상승폭이 너무 높은 코인 제외
+cut_rate_overraise = 1.125  #전일 상승폭이 너무 높은 코인 제외
 
 buy_rate = [0.34, 0.33, 0.33]
-emergency_sell_rate = [1.05, 1.05, 1.05]
+emergency_sell_rate = [1.055, 1.055, 1.05]
 
 def send_message(msg):
     """디스코드 메세지 전송"""
@@ -83,7 +82,8 @@ def filtered_upcut(cut_rate_overraise, ma_up_coin_list, max_retry_count=10):
         while retry_count < max_retry_count:
             try:
                 ohlcv_name = "KRW-" + coin
-                df_1 = pyupbit.get_ohlcv(ohlcv_name, interval="day", count=2)
+                df_1 = pyupbit.get_ohlcv(ohlcv_name, interval="day", count=3)
+                print(df_1)
 
                 # 오늘과 어제의 종가 값을 가져옴
                 today_close = df_1['close'].iloc[-1]
@@ -122,7 +122,7 @@ def get_coin_kvalue(trade_coin_list, find_date, fee):
         send_message(msg)
         print(trade_coin)
         try:
-            for k in np.arange(0.35, 0.55, 0.03):
+            for k in np.arange(0.25, 0.51, 0.03):
                 k_value = np.round(k, 3)
                 ohlcv_name = "KRW-" + trade_coin
                 df = pyupbit.get_ohlcv(ohlcv_name, count=find_date)
