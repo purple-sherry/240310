@@ -13,19 +13,21 @@ name = "SHERRY"
 access = "x70SQ3jOuppQBeedtfUNqMhSHZzCBLtc7CJ8CEvz"
 secret = "XnuKCo7vOxrsbd92PpAKB4sbsSgvn6pIGOwuz1uy"
 
-original_coin_list = ["BTC", "ETH", "SOL", "ADA", "DOGE",
-                      "DOT", "NEAR", "THETA", "BTG", "STX",
-                      "GLM", "IQ", "ATOM", "BTG", "ETC",
-                      "QTUM", "SAND","LINK", "ONT", "AVAX", "EOS", "BSV", "CELO"]
+original_coin_list = ["BTC", "ETH", "DOGE", "THETA","SAND"]
 
-additional_coins = ["BTC","ETH","DOGE","THETA","ATOM","GLM"] #240228_추가
+#original_coin_list = ["BTC", "ETH", "SOL", "ADA", "DOGE",
+#                      "DOT", "NEAR", "THETA", "BTG", "STX",
+#                      "GLM", "IQ", "ATOM", "BTG", "ETC",
+#                      "QTUM", "SAND","LINK", "ONT", "AVAX", "EOS", "BSV", "CELO"]
 
-find_date = 10
+additional_coins = ["BTC", "ETH", "DOGE", "THETA","SAND"] #240228_추가
+
+find_date = 7
 ma_date = 5
-cut_rate_overraise = 1.125  #전일 상승폭이 너무 높은 코인 제외
+cut_rate_overraise = 1.12  #전일 상승폭이 너무 높은 코인 제외
 
 buy_rate = [0.34, 0.33, 0.33]
-emergency_sell_rate = [1.055, 1.055, 1.05]
+emergency_sell_rate = [1.03, 1.03, 1.03]
 
 def send_message(msg):
     """디스코드 메세지 전송"""
@@ -63,7 +65,7 @@ def filtered_ma(ma_date, max_retry_count=10):
                 retry_count += 1
                 print(f"오류 발생 ({coin}): {e}, 재시도 횟수: {retry_count}")
 
-    if len(ma_up_coin_list) <= 5:
+    if len(ma_up_coin_list) <= 2:
         for coin in additional_coins:
             if coin not in ma_up_coin_list:
                 ma_up_coin_list.append(coin)
@@ -122,7 +124,7 @@ def get_coin_kvalue(trade_coin_list, find_date, fee):
         send_message(msg)
         print(trade_coin)
         try:
-            for k in np.arange(0.25, 0.51, 0.03):
+            for k in np.arange(0.45, 0.7, 0.02):
                 k_value = np.round(k, 3)
                 ohlcv_name = "KRW-" + trade_coin
                 df = pyupbit.get_ohlcv(ohlcv_name, count=find_date)
@@ -184,6 +186,7 @@ def get_target_price_gap(ticker, k):
             raise ValueError("Failed to retrieve data for {}".format(ticker))
         
         target_price_gap = (df.iloc[0]['high'] - df.iloc[0]['low']) * k
+        print("＠",ticker,"high:",df.iloc[0]['high'],"low:",df.iloc[0]['low'])
         return target_price_gap
     except Exception as e:
         print("Error occurred:", e)
