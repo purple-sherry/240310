@@ -26,7 +26,7 @@ smtp.login(my_account, my_password)
 # 메일을 받을 계정
 #to_mail = "ericsa@nate.com;ericsa@naver.com"
 
-to_mail_list = ["ericsa@nate.com", "ericsa@naver.com"]
+to_mail_list = ["ericsa@nate.com", "sarum007@naver.com"]
 
 for to_mail in to_mail_list:
     # 메일 기본 정보 설정
@@ -46,7 +46,7 @@ for to_mail in to_mail_list:
     강세은이 소리 지르자 몇차례 더 언쟁 후 김일환 나갔고 목격자들이 뒷수습
 
     하고싶은 말:
-    최근에 세은이가 어려운 상황을 겪었다는 소식을 듣고, 도와주고 싶었지만 세은이는 자존심이 강한 편이라서 제 도움을 받는 것을 꺼릴 것 같았어요.
+    한달전쯤에 세은이가 어려운 상황을 겪었다는 소식을 듣고, 도와주고 싶었지만 세은이는 자존심이 강한 편이라서 제 도움을 받는 것을 꺼릴 것 같았어요.
 
     주변 지인들을 통해 광주쪽 JB에게 그녀의 상황을 이야기하고 면담을 요청했는데, 세은이가 응원만 해달라는... 답변을 받았다더라구요. 이후에 여기 개발팀 사람들과 얘기를 나눠보니, 세은이가 너무 어려운 상황에 처해 있다는 생각이 들어서 메일을 쓰게 되었어요.
 
