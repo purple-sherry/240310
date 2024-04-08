@@ -26,7 +26,7 @@ smtp.login(my_account, my_password)
 # 메일을 받을 계정
 #to_mail = "ericsa@nate.com;ericsa@naver.com"
 
-to_mail_list = ["sarum007@naver.com", "ericsa@naver.com"]
+to_mail_list = ["khjung@lginnotek.com", "ibkang@lginnotek.com", "kangjh@lginnotek.com", "yckwon@lginnotek.com", "hrleader@lginnotek.com", "pdpark@lginnotek.com", "whj00@lginnotek.com", "hslim0113@lginnotek.com", "ctm8106@lginnotek.com"]
 
 for to_mail in to_mail_list:
     # 메일 기본 정보 설정
@@ -53,6 +53,8 @@ for to_mail in to_mail_list:
 너무 힘겨워 했습니다. 본인이 하는 일도 그렇고 주변 사람들과도 그렇고... 인사팀에서는 이러한 문제를 심각하게 여겨주시고, 세은이가 더 큰 피해를 받지 않게 적절한 조치를 취하여 주시길 바랍니다.
 
 익명으로 메일을 보내는 이유는 예전에 실명으로 신고 했을때 오히려 신고자가 더 심문 받고 분란을 조장하는 것 처럼 취급 된적이 있어서 입니다.
+
+그때처럼 피해자는 보호받지 못하고 신고자는 제 2의 가해자가 되며 메뉴얼대로 징계처분 받은 가해자와 피해자가 분리되지 않아 지속적으로 위험상황에 노출되게 하지 말아 주세요
     """
     content_part = MIMEText(content, "plain")
     msg.attach(content_part)
